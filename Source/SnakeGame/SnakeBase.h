@@ -29,11 +29,17 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 		TSubclassOf<ASnakeElementBase> SnakeElementClass;
 
-	UPROPERTY()
-		TArray<ASnakeElementBase> SnakeElements;
-
 	UPROPERTY(EditDefaultsOnly)
 		float ElementSize;
+
+	UPROPERTY(EditDefaultsOnly)
+		float MovementSpeed;
+
+	UPROPERTY()
+		TArray<ASnakeElementBase*> SnakeElements;
+
+	UPROPERTY()
+		EMovementDirection LastMoveDirection;
 
 protected:
 	// Called when the game starts or when spawned
@@ -44,5 +50,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	void AddSnakeElement(int ElementsNum = 1);
+
+	void Move();
 
 };
